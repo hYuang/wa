@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>fib</title>
+  </head>
+  <body>
+    <script>
+      Module = {}
+      Module.onRuntimeInitialized = function () {
+        var ptr = Module._fib(10)
+        if (ptr ==0 ) return
+        var str = ' '
+        for(var i = 0; i < 10; i++){
+          str += Module.HEAP32[(ptr>>2) + i]
+          str += '  '
+        }
+        console.log(str)
+        Module._free_buf(ptr)    
+      }
+    </script>
+    <script src="fib.js"></script>
+  </body>
+</html>
